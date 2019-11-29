@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/template.css">
+    <script src="resources/js/scripts.js"></script> 
+</head>
+<body>
+  <div class="main">
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1>ConCEP</h1>
+        <p>Consulta de CEP</p>
+        <input id="input_cep" placeholder="Informe aqui o CEP"/>
+        <button onclick="busca(this.parentNode.nodeValue);"><i class="fa fa-search"></i></button>
+      </div>
+    </div> 
+    
+    <div class="content">
+
+          <div id="cep-card">
+            <span id="cep"></span>
+            <span id="local"></span>
+            <span id="bairro"></span>
+            <span id="logradouro"></span>
+            <span id="complemento"></span>
+          </div>
+
+  </div>
+</body>
+</html>
