@@ -1,6 +1,13 @@
 var input_cep = document.getElementById('input_cep');
 var cep_card = document.getElementById('cep-card');
 var message = document.getElementById('message');
+var cep_field = document.getElementById('cep');
+var local = document.getElementById('local');
+var bairro = document.getElementById('bairro');
+var logradouro = document.getElementById('logradouro');
+var complemento = document.getElementById('complemento');
+var cod_ibge = document.getElementById('cod-ibge');
+var cod_gia = document.getElementById('cod-gia');
 
 input_cep.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -75,13 +82,13 @@ function busca(){
     }
     cep_card.style.visibility = 'visible';
     message.style.display = 'none';
-    document.getElementById('cep').innerHTML = data.cep;
-    document.getElementById('local').innerHTML = 'Local: '+formatData(data.localidade)+', '+formatData(data.uf);
-    document.getElementById('bairro').innerHTML =  'Bairro: '+formatData(data.bairro);
-    document.getElementById('logradouro').innerHTML = 'Logradouro: '+formatData(data.logradouro);
-    document.getElementById('complemento').innerHTML = 'Complemento: '+formatData(data.complemento);
-    document.getElementById('cod-ibge').innerHTML = 'Código IBGE: '+formatData(data.ibge);
-    document.getElementById('cod-gia').innerHTML = 'Código GIA: '+formatData(data.dia);
+    cep_field.innerHTML = data.cep;
+    local.innerHTML = 'Local: '+formatData(data.localidade)+', '+formatData(data.uf);
+    bairro.innerHTML =  'Bairro: '+formatData(data.bairro);
+    logradouro.innerHTML = 'Logradouro: '+formatData(data.logradouro);
+    complemento.innerHTML = 'Complemento: '+formatData(data.complemento);
+    cod_ibge.innerHTML = 'Código IBGE: '+formatData(data.ibge);
+    cod_gia.innerHTML = 'Código GIA: '+formatData(data.dia);
   })
   .catch(err => {
     toast(err.message);
@@ -90,4 +97,26 @@ function busca(){
 
 function formatData(data) {
   return data ? data : 'Informação ausente.';
+}
+
+function download() {
+  
+  text = 'CEP: '+cep_field.innerHTML+'\r\n'
+          +local.innerHTML+'\r\n'
+          +bairro.innerHTML+'\r\n'
+          +logradouro.innerHTML+'\r\n'
+          +complemento.innerHTML+'\r\n'
+          +cod_ibge.innerHTML+'\r\n'
+          +cod_gia.innerHTML;
+
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', cep_field.innerHTML+'.txt');
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }

@@ -88,8 +88,9 @@ button:hover{
 #cep{
   font-size: 22px;
   font-weight: 600;
-  border-bottom: 1px solid #ccc;
   margin-bottom: 5px;
+  display: inline-block !important;
+  width: unset !important;
 }
 
 #cep-card span{
@@ -104,12 +105,14 @@ button:hover{
 }
 
 #close_btn{
-  position: absolute;
-  top: 0;
-  right: 0;
+  float: right;
 }
 
-#close_btn:hover{
+#download_btn{
+  float: left;
+}
+
+#close_btn:hover, #download_btn:hover{
   color: #585858;
   cursor: pointer;
 }
