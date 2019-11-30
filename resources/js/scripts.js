@@ -1,3 +1,14 @@
+var input_cep = document.getElementById('input_cep');
+var cep_card = document.getElementById('cep-card');
+var message = document.getElementById('message');
+
+input_cep.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    busca();
+  }
+}); 
+
 function toast(message, time) {
   var toast = document.createElement('div');
   toast.id = 'toast';
@@ -25,18 +36,24 @@ function snackbar(message, time) {
 function remove(id) {
   var element = document.getElementById(id);
   document.body.removeChild(element); 
-}	
+}
 
-function alert(title, message) {
-	var alert = document.createElement('div');
-	alert.id = 'rl_alert';
-	alert.innerHTML = '<div class="fade show"><div class="rl-alert"><span class="rl-alert-header">'+title+'</span><span class="rl-alert-content">'+message+'</span><div class="rl-alert-footer"><span onclick="remove(\'rl_alert\');" class="rl-alert-option">OK</span></div></div></div>';
-	document.body.appendChild(alert);
+function clearCEP(){
+  cep_card.style.visibility = 'hidden';
+  message.style.display = 'block';
+}
+
+function validate(cep){
+  return cep.match('^\\d{5}[-]\\d{3}$') || cep.match('^\\d{5}\\d{3}$');
 }
 
 function busca(){
-  var input_cep = document.getElementById('input_cep');
   var cep = input_cep.value;
+
+  if(!validate(cep)){
+    toast('CEP inválido!');
+    return null;
+  }
 
   var url = 'https://viacep.com.br/ws/'+cep+'/json/';
   console.log('fetching: '+url);
@@ -44,20 +61,33 @@ function busca(){
   fetch(url)
   .then(response => {
     if(response.status === 200){
-      toast('Consulta realizada com sucesso!');
       return response.json();
     }else{
       toast('Erro: '+response.status);
     }
   })
   .then(data => {
+    if(data.erro == true){
+      toast('CEP não encontrado!');
+      return;
+    }else{
+      toast('Consulta realizada com sucesso!');
+    }
+    cep_card.style.visibility = 'visible';
+    message.style.display = 'none';
     document.getElementById('cep').innerHTML = data.cep;
-    document.getElementById('local').innerHTML = 'Local: '+data.localidade+', '+data.uf;
-    document.getElementById('bairro').innerHTML =  'Bairro: '+data.bairro;
-    document.getElementById('logradouro').innerHTML = 'Logradouro: '+data.logradouro;
-    document.getElementById('complemento').innerHTML = 'Complemento: '+data.complemento;
+    document.getElementById('local').innerHTML = 'Local: '+formatData(data.localidade)+', '+formatData(data.uf);
+    document.getElementById('bairro').innerHTML =  'Bairro: '+formatData(data.bairro);
+    document.getElementById('logradouro').innerHTML = 'Logradouro: '+formatData(data.logradouro);
+    document.getElementById('complemento').innerHTML = 'Complemento: '+formatData(data.complemento);
+    document.getElementById('cod-ibge').innerHTML = 'Código IBGE: '+formatData(data.ibge);
+    document.getElementById('cod-gia').innerHTML = 'Código GIA: '+formatData(data.dia);
   })
   .catch(err => {
     toast(err.message);
   })
+}
+
+function formatData(data) {
+  return data ? data : 'Informação ausente.';
 }

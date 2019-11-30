@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
     <link rel="stylesheet" type="text/css" href="resources/css/template.css">
-    <script src="resources/js/scripts.js"></script> 
+    
 </head>
 <body>
   <div class="main">
@@ -13,21 +13,26 @@
       <div class="hero-text">
         <h1>ConCEP</h1>
         <p>Consulta de CEP</p>
-        <input id="input_cep" placeholder="Informe aqui o CEP"/>
-        <button onclick="busca(this.parentNode.nodeValue);"><i class="fa fa-search"></i></button>
+        <input id="input_cep" placeholder="Informe aqui o CEP" autofocus/>
+        <button onclick="busca();"><i class="fa fa-search"></i></button>
       </div>
     </div> 
     
     <div class="content">
-
-          <div id="cep-card">
+      <span id="message">Informe um CEP válido e realize a busca para verificar os resultados.</span>
+      <div id="cep-card">
+        <div style="position: relative;">
             <span id="cep"></span>
-            <span id="local"></span>
-            <span id="bairro"></span>
-            <span id="logradouro"></span>
-            <span id="complemento"></span>
-          </div>
-
+            <i id="close_btn" class="fa fa-times" onclick="clearCEP();"></i>
+        </div>
+        <span id="local"></span>
+        <span id="bairro"></span>
+        <span id="logradouro"></span>
+        <span id="complemento"></span>
+        <span id="cod-ibge"></span>
+        <span id="cod-gia"></span>
+      </div>
+    <script src="resources/js/scripts.js"></script> 
   </div>
 </body>
 </html>

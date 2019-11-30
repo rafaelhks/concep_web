@@ -79,8 +79,10 @@ button:hover{
 #cep-card {
   background-color: white;
   padding: 10px;
-  margin: 3px;
+  margin: 5px;
+  text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  visibility: hidden;
 }
 
 #cep{
@@ -93,22 +95,31 @@ button:hover{
 #cep-card span{
   display: block;
   width: 100%;
-  text-align: justify;
   padding: 0px 5px 5px 5px;
   color: #393939;
 }
 
-.know-more {
-  text-align: right;
-  display: block;
-  text-decoration: none;
-  color:#4f4f4f;
-  font-size: 14px;
+#cod-ibge, #cod-gia{
+  color: #777 !important;
 }
 
-.know-more:hover{
+#close_btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#close_btn:hover{
+  color: #585858;
   cursor: pointer;
-  color: #2b2b2b;
+}
+
+#message{
+  display: block;
+  text-align: center;
+  padding: 20px;
+  color:
+  #393939;
 }
 
 .hero-image {
