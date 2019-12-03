@@ -8,6 +8,7 @@ var logradouro = document.getElementById('logradouro');
 var complemento = document.getElementById('complemento');
 var cod_ibge = document.getElementById('cod-ibge');
 var cod_gia = document.getElementById('cod-gia');
+var loader = document.getElementById('loader');
 
 input_cep.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -62,6 +63,8 @@ function busca(){
     return null;
   }
 
+  loader.style.display = 'inline-block';
+
   var url = 'https://viacep.com.br/ws/'+cep+'/json/';
   console.log('fetching: '+url);
 
@@ -74,6 +77,7 @@ function busca(){
     }
   })
   .then(data => {
+    loader.style.display = 'none';
     if(data.erro == true){
       toast('CEP não encontrado!');
       return;
