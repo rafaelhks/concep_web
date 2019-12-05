@@ -69,13 +69,13 @@ function busca(){
   console.log('fetching: '+url);
 	
   const controller = new AbortController();
-  const config = { ...options, signal: controller.signal }
+  const config = {signal: controller.signal }
 
   const timeout = setTimeout(() => {
     controller.abort();
   }, 5000);
 
-  fetch(url)
+  fetch(url, config)
   .then(response => {
     if(response.status === 200){
       return response.json();
@@ -134,27 +134,4 @@ function download() {
   element.click();
 
   document.body.removeChild(element);
-}
-
-const fetchWithTimeout = (uri, time = 5000) => {
-  const controller = new AbortController()
-  const config = {signal: controller.signal }
-
-  const timeout = setTimeout(() => {
-    controller.abort();
-  }, time)
-
-  return fetch(uri, config)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`${response.status}: ${response.statusText}`)
-      }
-      return response
-    })
-    .catch(error => {
-      if (error.name === 'AbortError') {
-        throw new Error('Response timed out')
-      }
-      throw new Error(error.message)
-    })
 }
