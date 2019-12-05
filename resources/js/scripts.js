@@ -136,9 +136,9 @@ function download() {
   document.body.removeChild(element);
 }
 
-const fetchWithTimeout = (uri, options = {}, time = 5000) => {
+const fetchWithTimeout = (uri, time = 5000) => {
   const controller = new AbortController()
-  const config = { ...options, signal: controller.signal }
+  const config = {signal: controller.signal }
 
   const timeout = setTimeout(() => {
     controller.abort();
