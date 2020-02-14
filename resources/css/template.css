@@ -165,6 +165,23 @@ button:hover{
   display: none;
 }
 
+.qr-code {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  background:white;
+  height: 5em;
+  width: 5em;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px#dfdfdf;
+}
+
+.qr-code:hover {
+  cursor: pointer;
+  background: whitesmoke;
+  border: 2px solid rgb(134, 134, 134);
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

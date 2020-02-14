@@ -67,8 +67,15 @@ function busca(){
 
   var url = 'https://viacep.com.br/ws/'+cep+'/json/';
   console.log('fetching: '+url);
+	
+  const controller = new AbortController();
+  const config = {signal: controller.signal }
 
-  fetch(url)
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 5000);
+
+  fetch(url, config)
   .then(response => {
     if(response.status === 200){
       return response.json();
@@ -95,7 +102,11 @@ function busca(){
     cod_gia.innerHTML = 'Código GIA: '+formatData(data.dia);
   })
   .catch(err => {
-    toast(err.message);
+    if (err.name === 'AbortError') {
+      toast('Tempo de conexão com a API ViaCEP expirado.');
+    }else{
+      toast(err.message);    
+    }
   })
 }
 
