@@ -24,9 +24,12 @@
       <span id="message">Informe um CEP válido e realize a busca para verificar os resultados.</span>
       <div id="cep-card">
         <div style="position: relative;">
-            <span id="cep"></span>
-            <i id="close_btn" class="fa fa-times" onclick="clearCEP();"></i>
-            <i id="download_btn" class="fa fa-download" onclick="download();"></i>
+            <label id="cep"></label>
+            <div class="tools">
+              <i id="close_btn" class="fa fa-times" onclick="clearCEP();"></i>
+              <i class="fa fa-download download_btn" onclick="download(0);"></i>
+              <i class="fa fa-download download_btn" onclick="download(1);" style="color:#2b6ae2"></i>
+            </div>
         </div>
         <span id="local"></span>
         <span id="bairro"></span>

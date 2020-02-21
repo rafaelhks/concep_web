@@ -9,6 +9,7 @@ var complemento = document.getElementById('complemento');
 var cod_ibge = document.getElementById('cod-ibge');
 var cod_gia = document.getElementById('cod-gia');
 var loader = document.getElementById('loader');
+var current_cep = {};
 
 input_cep.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -93,6 +94,7 @@ function busca(){
     }
     cep_card.style.visibility = 'visible';
     message.style.display = 'none';
+    current_cep = data;
     cep_field.innerHTML = data.cep;
     local.innerHTML = 'Local: '+formatData(data.localidade)+', '+formatData(data.uf);
     bairro.innerHTML =  'Bairro: '+formatData(data.bairro);
@@ -114,8 +116,12 @@ function formatData(data) {
   return data ? data : 'Informação ausente.';
 }
 
-function download() {
-  
+const metaType = [{type:'text/plain', ext:'txt'}, {type:'application/json', ext:'json'}];
+
+
+function download(type) {
+  var dtype = metaType[type];
+
   text = 'CEP: '+cep_field.innerHTML+'\r\n'
           +local.innerHTML+'\r\n'
           +bairro.innerHTML+'\r\n'
@@ -125,8 +131,8 @@ function download() {
           +cod_gia.innerHTML;
 
   var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', cep_field.innerHTML+'.txt');
+  element.setAttribute('href', 'data:'+dtype.type+';charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', cep_field.innerHTML+'.'+dtype.ext);
 
   element.style.display = 'none';
   document.body.appendChild(element);

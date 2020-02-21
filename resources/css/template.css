@@ -69,18 +69,17 @@ h1 {
 }
 
 button {
-  font-size: 1em;
-  padding: 5px;
-  border-radius: 45%;
-  border: 1px solid transparent;
+  font-size: 1.2em;
+  border: none;
   width: 30px;
   margin-left: -40px;
+  background: none;
+  color:#ccc;
 }
 
 button:hover{
   cursor: pointer;
   background: none;
-  border: 1px solid white;
   color: white;
 }
 
@@ -112,15 +111,24 @@ button:hover{
   color: #777 !important;
 }
 
+#cep-card .tools{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 #close_btn{
   float: right;
 }
 
-#download_btn{
+.download_btn{
   float: left;
+  margin-right: 10px;
 }
 
-#close_btn:hover, #download_btn:hover{
+#close_btn:hover, .download_btn:hover{
   color: #585858;
   cursor: pointer;
 }
@@ -154,8 +162,9 @@ button:hover{
 
 .loader {
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+  /* transform: translate(-50%, -50%); */
   border: 12px solid #5c5c5c; 
   border-top: 12px solid #02141f; 
   border-radius: 50%;
@@ -193,8 +202,13 @@ button:hover{
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   [class^="col-"] {
     width: 100%;
+  }
+
+  .qr-code {
+    width: 4em;
+    height: 4em;
   }
 }
