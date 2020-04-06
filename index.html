@@ -27,8 +27,13 @@
             <label id="cep"></label>
             <div class="tools">
               <i id="close_btn" class="fa fa-times" onclick="clearCEP();"></i>
-              <i class="fa fa-download download_btn" onclick="download(0);"></i>
-              <i class="fa fa-download download_btn" onclick="download(1);" style="color:#2b6ae2"></i>
+              <div class="dropdown" style="float: left;">
+                <button class="dropbtn"><i class="fa fa-download"></i></button>
+                <div class="dropdown-content">
+                  <a href="#" onclick="downloadFile(0);">Text (.txt)</a>
+                  <a href="#" onclick="downloadFile(1);">JSON (.json)</a>
+                </div>
+              </div> 
             </div>
         </div>
         <span id="local"></span>
@@ -39,7 +44,7 @@
         <span id="cod-gia"></span>
       </div>
       <a href="https://rafaelhks.github.io/"><img class="qr-code" src="resources/image/qr_code.png" alt="qrcode"></a>
-      <script src="resources/js/scripts.js"></script> 
   </div>
+  <script src="resources/js/scripts.js"></script> 
 </body>
 </html>

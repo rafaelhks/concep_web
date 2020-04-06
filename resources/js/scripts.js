@@ -119,7 +119,7 @@ function formatData(data) {
 const metaType = [{type:'text/plain', ext:'txt'}, {type:'application/json', ext:'json'}];
 
 
-function download(type) {
+function downloadFile(type) {
   var dtype = metaType[type];
 
   text = 'CEP: '+cep_field.innerHTML+'\r\n'
