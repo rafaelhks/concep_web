@@ -121,15 +121,18 @@ const metaType = [{type:'text/plain', ext:'txt'}, {type:'application/json', ext:
 
 function downloadFile(type) {
   var dtype = metaType[type];
-
-  text = 'CEP: '+cep_field.innerHTML+'\r\n'
+  var text = '';
+  if(type===0) {
+    text = 'CEP: '+cep_field.innerHTML+'\r\n'
           +local.innerHTML+'\r\n'
           +bairro.innerHTML+'\r\n'
           +logradouro.innerHTML+'\r\n'
           +complemento.innerHTML+'\r\n'
           +cod_ibge.innerHTML+'\r\n'
           +cod_gia.innerHTML;
-
+  } else if (type===1) {
+    text = JSON.stringify(current_cep);	  
+  }  
   var element = document.createElement('a');
   element.setAttribute('href', 'data:'+dtype.type+';charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', cep_field.innerHTML+'.'+dtype.ext);
