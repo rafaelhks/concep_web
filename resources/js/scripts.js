@@ -64,6 +64,7 @@ function busca(){
     return null;
   }
 
+  message.style.visibility = 'hidden';
   loader.style.display = 'inline-block';
 
   var url = 'https://viacep.com.br/ws/'+cep+'/json/';
@@ -82,12 +83,14 @@ function busca(){
       return response.json();
     }else{
       toast('Erro: '+response.status);
+      message.style.visibility = 'visible';
     }
   })
   .then(data => {
     loader.style.display = 'none';
     if(data.erro == true){
       toast('CEP não encontrado!');
+      message.style.visibility = 'visible';
       return;
     }else{
       toast('Consulta realizada com sucesso!');
@@ -109,6 +112,7 @@ function busca(){
     }else{
       toast(err.message);    
     }
+    message.style.visibility = 'visible';
   })
 }
 
