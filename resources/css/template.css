@@ -24,6 +24,10 @@ h1 {
   word-break: break-all;
 }
 
+button:hover{
+  cursor: pointer;
+}
+
 .row {
   margin: 0px;
 }
@@ -68,7 +72,7 @@ h1 {
   padding-right: 40px;
 }
 
-button {
+.search-button {
   font-size: 1.2em;
   border: none;
   width: 30px;
@@ -77,8 +81,7 @@ button {
   color:#ccc;
 }
 
-button:hover{
-  cursor: pointer;
+.search-button:hover{
   background: none;
   color: white;
 }
@@ -98,13 +101,6 @@ button:hover{
   margin-bottom: 5px;
   display: inline-block !important;
   width: unset !important;
-}
-
-#cep-card span{
-  display: block;
-  width: 100%;
-  padding: 0px 5px 5px 5px;
-  color: #393939;
 }
 
 #cod-ibge, #cod-gia{
@@ -131,6 +127,13 @@ button:hover{
 #close_btn:hover, .download_btn:hover{
   color: #585858;
   cursor: pointer;
+}
+
+#cep-card .cep-prop{
+  display: block;
+  width: 100%;
+  padding: 0px 5px 5px 5px;
+  color: #393939;
 }
 
 #message{
@@ -197,6 +200,8 @@ button:hover{
   border: none;
   width: auto;
   margin: unset;
+  background: none;
+  padding: 0;
 }
 
 .dropdown {
@@ -227,6 +232,20 @@ button:hover{
 
 .dropdown:hover .dropbtn {color: #3669f3;} 
 
+footer{
+  width: 100%;
+  background-color:#f7f7f7;
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color:dimgray;
+}
+
+footer a{
+  color: #457baa;
+  text-decoration: none;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -244,7 +263,8 @@ button:hover{
   }
 
   .qr-code {
-    width: 4em;
-    height: 4em;
+    /* width: 4em;
+    height: 4em; */
+    display: none;
   }
 }

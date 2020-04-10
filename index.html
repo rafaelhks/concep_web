@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ConCEP - Consulta de CEP Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
     <link rel="stylesheet" type="text/css" href="resources/css/template.css">
 </head>
@@ -15,7 +15,7 @@
         <h1>ConCEP</h1>
         <p>Consulta de CEP</p>
         <input id="input_cep" placeholder="Informe aqui o CEP" autofocus/>
-        <button onclick="busca();"><i class="fa fa-search"></i></button>
+        <button onclick="busca();" class="search-button"><i class="fa fa-search"></i></button>
       </div>
     </div> 
     
@@ -36,15 +36,16 @@
               </div> 
             </div>
         </div>
-        <span id="local"></span>
-        <span id="bairro"></span>
-        <span id="logradouro"></span>
-        <span id="complemento"></span>
-        <span id="cod-ibge"></span>
-        <span id="cod-gia"></span>
+        <div class="cep-prop">Local: <span id="local"></span></div>
+        <div class="cep-prop">Bairro: <span id="bairro"></span></div>
+        <div class="cep-prop">Logradouro: <span id="logradouro"></span></div>
+        <div class="cep-prop">Complemento: <span id="complemento"></span></div>
+        <div class="cep-prop">Código IBGE: <span id="cod-ibge"></span></div>
+        <div class="cep-prop">Código GIA: <span id="cod-gia"></span></div>
       </div>
       <a href="https://rafaelhks.github.io/"><img class="qr-code" src="resources/image/qr_code.png" alt="qrcode"></a>
   </div>
+
   <script src="resources/js/scripts.js"></script> 
 </body>
 </html>
